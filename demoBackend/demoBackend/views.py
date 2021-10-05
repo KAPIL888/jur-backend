@@ -11,29 +11,25 @@ from django.contrib.auth.models import User
 
 def Success_response(obj):
     content = {
-                    'status': {
                         'isSuccess': True,
                         'code': "SUCCESS",
                         'message': "Success",
-                    },
                 }
 
     for key, value in obj.iteritems():
-         content['status'][key] = value
+         content[key] = value
     return Response(content, status=status.HTTP_200_OK)
 
 
 def fail_response(obj):
     content = {
-                    'status': {
                         'isSuccess': False,
                         'code': "fail",
                         'message': "failed",
-                    },
                 }
 
     for key, value in obj.iteritems():
-         content['status'][key] = value
+         content[key] = value
     return Response(content, status=status.HTTP_200_OK)
 
 class LoginFun(APIView):
